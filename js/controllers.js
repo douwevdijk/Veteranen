@@ -84,9 +84,9 @@ angular.module('veteranenF.controllers', [])
 		
 	$scope.chAccount = function () {
 	
-		auth.chAccount('douwevdijk@hotmail.com').success(function(data) {
+		auth.chAccount('douwevdisjk@hotmail.com').success(function(data) {
 
-		  if(!data) {
+		  if(data.validate !== 'success') {
 		  
 			$scope.msgIn = true;
 			$timeout(function () { $scope.msgIn = false; }, 3000);
