@@ -4,16 +4,16 @@
             <div class="alert alert-danger"> <i class="ion ion-close"></i> Incorrect Username or Password</div>
         </div>
         <div class="list list-inset">
-            <form name="loginForm" novalidate ng-hide="loginbox">
+            <form name="loginForm">
                 <div>
                     <label class="item item-input">
-                        <input type="text" placeholder="Email" class="hp_input" ng-model="user.orgID" name="orgID" required autocomplete="off">
+                        <input type="text" placeholder="Email" ng-model="login.email" name="email">
                     </label>
                 </div>
 
                 <div>
                     <label class="item item-input">
-                        <input type="tel" placeholder="Wachtwoord" class="hp_input" ng-model="user.mobileNo" ng-minlength="10" name="mobileNo" required autocomplete="off">
+                        <input type="tel" placeholder="Wachtwoord" ng-model="login.pass" ng-minlength="10" name="pass">
                     </label>
                 </div>
 

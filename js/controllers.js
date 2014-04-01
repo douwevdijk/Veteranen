@@ -68,6 +68,9 @@ angular.module('veteranenF.controllers', [])
 
 .controller('lgCtrl', function($scope, $location, $timeout, $ionicLoading, auth) {
 
+    	
+	$scope.login = {};
+	
 	$scope.msgIn = false;
 
 	$scope.loading = function () {
@@ -84,7 +87,12 @@ angular.module('veteranenF.controllers', [])
 		
 	$scope.chAccount = function () {
 	
-		auth.chAccount('douwevdisjk@hotmail.com').success(function(data) {
+	    var login = $scope.login.email,
+		    pass = $scope.login.pass;
+		
+		auth.chAccount(login).success(function(data) {
+		
+		  console.log($scope);
 
 		  if(data.validate !== 'success') {
 		  
