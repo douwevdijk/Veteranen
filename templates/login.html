@@ -1,0 +1,26 @@
+<ion-view title="Login">
+    <ion-content has-header="true" has-tabs="false">
+        <div class="message" ng-class="{'message-in': msgIn}">
+            <div class="alert alert-danger"> <i class="ion ion-close"></i> Incorrect Username or Password</div>
+        </div>
+        <div class="list list-inset">
+            <form name="loginForm" novalidate ng-hide="loginbox">
+                <div>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Email" class="hp_input" ng-model="user.orgID" name="orgID" required autocomplete="off">
+                    </label>
+                </div>
+
+                <div>
+                    <label class="item item-input">
+                        <input type="tel" placeholder="Wachtwoord" class="hp_input" ng-model="user.mobileNo" ng-minlength="10" name="mobileNo" required autocomplete="off">
+                    </label>
+                </div>
+
+                <button class="button button-block button-calm" ng-click="chAccount()">Inloggen</button>
+
+            </form>
+
+        </div>
+    </ion-content>
+</ion-view>

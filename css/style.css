@@ -1,0 +1,131 @@
+body {
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+}
+
+.bg-image {
+  position: fixed;
+  width: 120%;
+  height: 120%;
+  background-size: cover;
+}
+
+
+.intro {
+  left: 0 !important;
+  padding: 60px 0;
+  text-align: center;
+  transition: opacity 0.5s ease 0s;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.img{
+	max-width:100%;
+}
+
+.intro h2 {
+  font-size: 46px;
+  font-weight: 100;
+  color: #EF4E3A;
+  margin-top:20px;
+  text-shadow: 1px 1px 1px #fff;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'RobotoBold',sans-serif;
+  color: inherit;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  margin: 10px 0;
+  text-rendering: optimizelegibility;
+
+}
+
+.intro p {
+  font-size: 22px;
+  line-height: 36px;
+  margin: 40px 0 10px;
+  padding: 0 20px;
+  background:rgba(255,255,255, 0.7);
+  color:#666;
+}
+
+#getStatred{
+	margin-top:50px;
+	padding:15px;
+	font-size:24px;
+}
+
+.has-error .hp_input {
+  border: 1px solid #EF4E3A;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+#first-loader {
+	background: url("../img/loading.gif") center center no-repeat;
+	background-size: 60px 60px;
+	height: 400px;
+}
+
+.pull-none{
+	float:none !important;
+}
+
+.pull-left{
+	float:left !important;
+}
+
+.alert {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 0;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.alert-danger {
+  background-color: #F2DEDE;
+  border-color: #EBCCD1;
+  color: #A94442;
+}
+
+.alert-welcome {
+  background-color: #4a87ee;
+  border-color: #145fd7;
+  color: #FFF;
+}
+
+
+.alert-info {
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  color: #31708F;
+}
+
+.org-title{
+	color:#9EA6AD;
+	border:1px dashed #ccc;
+	border-radius:5px;
+	margin-top:10px !important;
+	padding:10px;
+	font-style:italic;
+}
+
+.message{
+top: 0;
+position: relative;
+width: 100%;
+text-align: center;
+overflow-y: hidden;
+max-height: 0px;
+-webkit-transition: max-height 0.5s;
+-moz-transition: max-height 0.5s;
+transition: max-height 0.5s;
+}
+
+.message-in{
+max-height: 200px;
+}

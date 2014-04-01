@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script type="text/javascript" src="PushNotification.js"></script>
+    <script src="js/fastclick.js"></script>
+
+  </head>
+
+  <body ng-app="veteranenF" ng-controller="AppCtrl">
+    <ion-nav-view></ion-nav-view>
+
+<script>
+
+    window.addEventListener('load', function() {
+      FastClick.attach(document.body);
+    }, false);
+
+    var PushNotApp = PushNotApp || {};
+
+    PushNotApp.main = (function() {
+
+    var pushNotification = window.plugins.pushNotification,
+
+    showAlert = function(message, title) {
+        if(navigator.notification) {
+        navigator.notification.alert(message, null, title, 'Sluit');
+        navigator.notification.vibrate(1000);
+        }else{
+        alert(title ? (title + ": " + message) : message);
+    }
+ },
+
+ addCallback = function(key, callback) {
+  if(window.callbacks === undefined) {
+   window.callbacks = {};
+  }
+  window.callbacks[key] = callback;
+ },
+
+ addNotification = function(notificationTxt) {
+  var el = document.getElementById('notification');
+  el.innerHTML += notificationTxt;
+ },
+
+ registrationSuccessHandler = function(token) {
+  addCallback('notificationHandler', notificationHandler);
+ },
+
+ registrationFailedHandler = function(error) {
+  showAlert(error, "Error");
+ },
+
+ notificationHandler = function(evt) {
+    showAlert(evt.alert, 'Message');
+ },
+
+deviceReady = function() {
+ if(parseFloat(device.version) === 7.0) {
+  //document.body.style.marginTop = "20px";
+ }
+ pushNotification.register(registrationSuccessHandler,
+                           registrationFailedHandler, {
+                           "badge":"true",
+                           "sound":"true",
+                           "alert":"true",
+                           "ecb":"callbacks.notificationHandler"
+                           });
+},
+
+initialize = function(){
+ document.addEventListener("deviceready", deviceReady, false);
+}
+
+return {
+ initialize:initialize
+}
+
+}());
+
+PushNotApp.main.initialize();
+    </script>
+  </body>
+</html>
