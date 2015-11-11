@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MMIT BigData</title> 
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="gm.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+		<div class="leads col-md-12">
+			<span style="position: absolute; top: 50px;" class="label label-primary">demo examples</span>
+			<span>http://leadit.multi-mit.com/LeadIT5/ContentPages/CustomerDetails.aspx?id=5615366</span>
+		</div>		
+		
+		
+	<div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="tone.js"></script>
+	<script>
+	
+		$('.container').on('click', '.goto-lead', function () { 
+			id = $(this).data('id');
+			window.open('http://leadit.multi-mit.com/LeadIT5/ContentPages/CustomerDetails.aspx?id=' + id);
+		});
+		
+		
+		var context = new (window.AudioContext || window.webkitAudioContext)();
+			
+		var drum = null;
+		var bongo = null;
+		var hihat = null;
+		
+		var buffer;
+		var sourceNode;
+
+		var startedAt;
+		var pausedAt;
+		var paused;
+
+		window.AudioContext = window.AudioContext || window.webkitAudioContext;
+		var ctx = new AudioContext();
+
+		function load(url, type) {
+		  var request = new XMLHttpRequest();
+		  request.open('GET', url, true);
+		  request.responseType = 'arraybuffer';
+
+		  request.onload = function() {
+			context.decodeAudioData(request.response, function(b) {
+			  switch(type) {
+				case 'bongo':
+				bongo = b;
+				break;
+				
+				case 'hihat':
+				hihat = b;
+				break;
+				
+				case 'drum':
+				drum = b;
+				break;
+				
+			  }
+			});
+		  }
+		  request.send();
+		}
+		
+		function play(type) {
+			sourceNode = ctx.createBufferSource();
+			sourceNode.connect(ctx.destination);
+			sourceNode.buffer = type;
+			sourceNode.loop = true;
+			
+			paused = false;
+
+			if (pausedAt) {
+				startedAt = Date.now() - pausedAt;
+				sourceNode.start(0, pausedAt / 1000);
+			}
+			else {
+				startedAt = Date.now();
+				sourceNode.start(0);
+			}
+		};
+
+		function stop() {
+			sourceNode.stop(0);
+			pausedAt = Date.now() - startedAt;
+			paused = true;
+		};
+
+		function onBufferLoad(b) {
+			buffer = b;
+			play();
+		};
+		
+	</script>
+
+</body>
+
+</html>
